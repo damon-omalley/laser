@@ -181,14 +181,14 @@ uint8_t passone (uint32_t ln, uint16_t *addr, TokenBuffer *buf, arrs_t *arrs)
             */
             tok = token[j]->str;
             
-            char *exists = existlabel (arrs->label, *addr);
+            /* char *exists = existlabel (arrs->label, *addr); */
 
-            if (exists == NULL) {
+            /* if (exists == NULL) { */
                 addlabel (arrs->label, ln, token[j], *addr);
-            } else {
-                error (ln, "Multiple labels pointing to same address: '%s' and '%s'",
-                        exists, token[j]->str);    
-            }
+            /* } else { */
+            /*     error (ln, "Multiple labels pointing to same address: '%s' and '%s'", */
+            /*             exists, token[j]->str);     */
+            /* } */
             
             opnum = 0;
         } else if ((op = isoperand (token[j])) >= 0) {
@@ -457,10 +457,10 @@ uint8_t passtwo (uint32_t tbufind, uint16_t *addr, arrs_t *arrs)
 
                 if (offt > 0) {
                     trapvect8 = offset (offt, token[1]);
-                    if (trapvect8 > 0x25 || trapvect8 < 0x20) {
-                        warning (ln, "'%s' is not a predefined trap routine",
-                                token[1]->str);
-                    }
+                    /* if (trapvect8 > 0x25 || trapvect8 < 0x20) { */
+                    /*     warning (ln, "'%s' is not a predefined trap routine", */
+                    /*             token[1]->str); */
+                    /* } */
                     if (trapvect8 > 0xFF || trapvect8 < 0) {
                         error (ln, "'%s' is not a valid trap vector",
                                 token[1]->str);
